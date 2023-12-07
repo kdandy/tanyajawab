@@ -1,0 +1,22 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#
+pre-push:
+  parallel: true
+  commands:
+    # taze:
+    #   run: pnpx taze --failOnOutdated
+    check:
+      glob: '**/*.{js,ts,jsx,tsx}'
+      run: pnpm biome check --apply {push_files}
+    # build:
+    #   run: pnpm build
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: '**/*.{js,ts,jsx,tsx}'
+      run: pnpm biome format --write {staged_files}
